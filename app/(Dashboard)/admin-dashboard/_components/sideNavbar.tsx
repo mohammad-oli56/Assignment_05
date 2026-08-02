@@ -3,7 +3,7 @@ import Link from "next/link";
 const menuItems = [
   { title: "Home", href: "/admin-dashboard/" },
   { title: "All Users", href: "/admin-dashboard/all-user" },
-  { title: "Update Status", href: "/admin-dashboard/update-status" },
+  // { title: "Update Status", href: "/admin-dashboard/update-status" },
   { title: "All Property", href: "/admin-dashboard/all-property" },
   { title: "All Category", href: "/admin-dashboard/all-category" },
   { title: "Rental Request", href: "/admin-dashboard/rental-request" },

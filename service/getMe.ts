@@ -33,7 +33,7 @@ export const getMe = async () => {
         },
       }
     );
-    console.log(res.data)
+    // console.log(res.data)
     return res.data;
   } catch (error: any) {
     return {
