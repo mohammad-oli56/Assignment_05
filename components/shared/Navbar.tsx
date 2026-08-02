@@ -29,7 +29,7 @@ type IUser = {
       email: string;
       phoneNumber: string;
       profileImage: string | null;
-      role: "ADMIN" | "USER";
+      role: "ADMIN" | "LANDLORD" |"TENANT";
       status: "ACTIVE" | "INACTIVE";
       createdAt: string;
       updatedAt: string;
@@ -64,6 +64,16 @@ const navLinks = [
 export default function Navbar({ user }: NavbarProps) {
   const isLoggedIn = user?.success && user?.data?.profile;
   const router = useRouter();
+
+  // console.log(user?.data?.profile.role,"form navbar")
+ const dashboardPath =
+  user?.data?.profile?.role === "ADMIN"
+    ? "/admin-dashboard"
+    : user?.data?.profile?.role === "LANDLORD"
+    ? "/landlord-dashboard"
+    : user?.data?.profile?.role === "TENANT"
+    ? "/tenant-dashboard"
+    : "/";
 
   return (
     <header className="sticky top-0 z-50 border-b bg-white/80 backdrop-blur">
@@ -111,7 +121,7 @@ export default function Navbar({ user }: NavbarProps) {
                 <DropdownMenuSeparator />
 
                 <DropdownMenuItem asChild>
-                  <Link href="/dashboard">
+                  <Link href={dashboardPath}>
                     <SettingsIcon className="mr-2 h-4 w-4" />
                     Dashboard
                   </Link>
