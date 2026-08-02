@@ -6,7 +6,7 @@ export const getAllUser = async () => {
 
  const cookieHeader = cookieStore.get("accessToken")?.value
 
-//  console.log(cookieHeader)
+
   const res = await axios.get("https://assignment-04-drab.vercel.app/api/admin/users",
   {
     headers: {
@@ -15,7 +15,7 @@ export const getAllUser = async () => {
   }
 );
 
-// console.log(res.data.data.result)
+
 
   return res.data.data.result;
 };

@@ -8,7 +8,7 @@ const page =async () => {
 
   const user = await getAllUser()
 
-  console.log(user,"from page")
+  // console.log(user,"from page")
 
   return (
     <div>
