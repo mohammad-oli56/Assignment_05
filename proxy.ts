@@ -7,7 +7,7 @@ import type { NextRequest } from 'next/server'
 
 
  const AUTH_ROUTE = ["/login","/reginter"]
- const PUBLIC_ROUTE = ["/","/about","/login","/reginter"]
+ const PUBLIC_ROUTE = ["/","/about","/login","/reginter","/property"]
 
 
 // This function can be marked `async` if using `await` inside

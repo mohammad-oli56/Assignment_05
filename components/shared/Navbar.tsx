@@ -48,7 +48,7 @@ const navLinks = [
   },
   {
     name: "Properties",
-    href: "/properties",
+    href: "/property",
   },
   {
     name: "About",
@@ -58,6 +58,7 @@ const navLinks = [
     name: "Contact",
     href: "/contact",
   },
+ 
 ];
 
 export default function Navbar({ user }: NavbarProps) {
