@@ -1,4 +1,5 @@
 import React from "react";
+import { Modal } from "./Model";
 
 export type TUser = {
   id: string;
@@ -56,11 +57,10 @@ const AllUserPage = ({ users }: AllUserPageProps) => {
 
                   <td className="px-5 py-4">
                     <span
-                      className={`rounded-full px-3 py-1 text-sm font-semibold ${
-                        user.status === "ACTIVE"
+                      className={`rounded-full px-3 py-1 text-sm font-semibold ${user.status === "ACTIVE"
                           ? "bg-green-100 text-green-700"
                           : "bg-red-100 text-red-700"
-                      }`}
+                        }`}
                     >
                       {user.status}
                     </span>
@@ -71,9 +71,10 @@ const AllUserPage = ({ users }: AllUserPageProps) => {
                   </td>
 
                   <td className="px-5 py-4 text-center">
-                    <button className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white hover:bg-indigo-700">
-                      Status Change
-                    </button>
+                    <Modal
+                      id={user.id}
+                      status={user.status}
+                    />
                   </td>
                 </tr>
               ))}

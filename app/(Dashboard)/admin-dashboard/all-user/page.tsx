@@ -12,7 +12,7 @@ const page =async () => {
 
   return (
     <div>
-      <AllUserPage users={user}/>
+      <AllUserPage users={user}/> 
     </div>
   )
 }
