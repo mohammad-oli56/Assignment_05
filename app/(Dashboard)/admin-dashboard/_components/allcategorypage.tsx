@@ -1,5 +1,7 @@
 "use client";
 
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 import React from "react";
 
 type TCategory = {
@@ -11,6 +13,8 @@ type TCategory = {
 type TProps = {
   categories: TCategory[];
 };
+
+// const router = useRouter();
 
 const Allcategorypage = ({ categories }: TProps) => {
   return (
@@ -25,9 +29,11 @@ const Allcategorypage = ({ categories }: TProps) => {
           </p>
         </div>
 
-        <button className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-700">
-          Create Category
+         <Link href={"/admin-dashboard/create-category"}>
+        <button  className="rounded-lg bg-blue-600 px-4 py-2 font-medium text-white transition hover:bg-blue-700">
+        Create category
         </button>
+        </Link>
       </div>
 
       {/* Table */}

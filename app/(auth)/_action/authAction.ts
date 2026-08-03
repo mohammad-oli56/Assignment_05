@@ -10,10 +10,7 @@ export type TPrevState = {
   message: string;
 };
 
-export async function loginAction(
-  prevState: TPrevState,
-  formData: FormData
-): Promise<TPrevState> {
+export async function loginAction( prevState: TPrevState, formData: FormData): Promise<TPrevState> {
   const email = formData.get("email") as string;
   const password = formData.get("password") as string;
 
