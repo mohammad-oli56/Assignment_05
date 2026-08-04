@@ -1,9 +1,14 @@
 import React from 'react'
+import Mypropertypage from '../_component/mypropertypage'
+import { getmyproperty } from '../_action/getmyproperty'
 
-const page = () => {
+const page = async() => {
+
+  const myproperty = await getmyproperty()
+
   return (
     <div>
-      my property
+    <Mypropertypage myproperty={myproperty} ></Mypropertypage>
     </div>
   )
 }
