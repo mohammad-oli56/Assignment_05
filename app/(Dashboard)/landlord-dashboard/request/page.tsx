@@ -1,9 +1,13 @@
 import React from 'react'
+import Requestpage from '../_component/requestpage'
+import { getpropertyrequest } from '../_action/getrequest'
 
-const page = () => {
+const page =async () => {
+  const request = await getpropertyrequest()
+  // console.log(request) 
   return (
     <div>
-      request
+      <Requestpage request={request} ></Requestpage>
     </div>
   )
 }
