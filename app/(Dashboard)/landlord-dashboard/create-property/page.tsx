@@ -1,9 +1,14 @@
 import React from 'react'
+import PropertycreateFrom from '../_component/PropertycreateFrom'
+import { getallcategory } from '../../admin-dashboard/_action/get_all_Category'
 
-const page = () => {
+const page = async() => {
+
+const category = await getallcategory()
+
   return (
     <div>
-      crate property
+      <PropertycreateFrom category={category}/>
     </div>
   )
 }
