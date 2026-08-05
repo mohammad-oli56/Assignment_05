@@ -2,7 +2,7 @@ import React from 'react'
 import Link from "next/link";
 const menuItems = [
   { title: "Home", href: "/tenant-dashboard" },
-  { title: "Rental create", href: "/tenant-dashboard/rental-create" },
+  { title: "Rental create", href: "/property" },
   { title: "My Request", href: "/tenant-dashboard/my-requests" },
   { title: "Payment Create", href: "/tenant-dashboard/payment-create" },
   { title: "Payment History", href: "/tenant-dashboard/payment-history" },

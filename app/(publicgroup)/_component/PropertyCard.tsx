@@ -11,7 +11,7 @@ import {
 import Link from "next/link";
 
 export function PropertyCard({ data }:any) {
-  // console.log(data);
+  
 
   return (
     <Card className="relative mx-auto w-full max-w-sm pt-0">
