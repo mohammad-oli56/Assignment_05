@@ -1,11 +1,15 @@
-import React from 'react'
+import React from "react";
+import { allpaymenthistory } from "../_action/allpaymenthistory";
+import AllPaymentHistoryCard from "../_component/AllPaymentHistoryCard";
 
-const paymentHistorypage = () => {
+const PaymentHistorypage = async () => {
+  const allhistory = await allpaymenthistory();
+
   return (
-    <div>
-      payment history
+    <div className="p-6">
+      <AllPaymentHistoryCard payments={allhistory} />
     </div>
-  )
-}
+  );
+};
 
-export default paymentHistorypage
+export default PaymentHistorypage;

@@ -2,14 +2,17 @@
 
 import React, { useState } from "react";
 import { createpayment } from "../_action/createpaymetn";
+import { useRouter } from "next/navigation";
 
 type Props = {
   requests: any[];
 };
 
 const PaymetCreateCard = ({ requests }: Props) => {
-  const approvedRequests =
-    requests?.filter((item: any) => item.status === "APPROVED") || [];
+
+  const router = useRouter()
+
+  const approvedRequests =requests?.filter((item: any) => item.status === "APPROVED") || [];
 
   const [loadingId, setLoadingId] = useState<string | null>(null);
   const [message, setMessage] = useState("");
@@ -20,9 +23,10 @@ const handelPyment = async (id: string) => {
     const result = await createpayment(id);
 
     if (result.success && result.paymentUrl) {
-      window.open(result.paymentUrl, "_blank", "noopener,noreferrer");
-      return;
-    }
+  window.open(result.paymentUrl, "_blank", "noopener,noreferrer");
+  router.push("/tenant-dashboard/payment-history");
+  return;
+}
 
     alert(result.message);
   } catch (error) {
