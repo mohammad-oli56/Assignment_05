@@ -1,16 +1,20 @@
-import React from 'react'
-import Mypropertypage from '../_component/mypropertypage'
-import { getmyproperty } from '../_action/getmyproperty'
+import React from "react";
+import Mypropertypage from "../_component/mypropertypage";
+import { getmyproperty } from "../_action/getmyproperty";
+import { getMe } from "@/service/getMe";
 
-const page = async() => {
-
-  const myproperty = await getmyproperty()
+const Page = async () => {
+  const myproperty = await getmyproperty();
+  const user = await getMe();
 
   return (
     <div>
-    <Mypropertypage myproperty={myproperty} ></Mypropertypage>
+      <Mypropertypage
+        myproperty={myproperty}
+        user={user}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default Page;
