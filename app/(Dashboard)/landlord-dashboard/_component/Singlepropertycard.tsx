@@ -4,8 +4,9 @@ import React, { useEffect } from "react";
 import Link from "next/link";
 import { landlordgeleteproperty } from "../_action/deleteproperty";
 import { useRouter } from "next/navigation";
+import Updatemodel from "./Updatemodel";
 
-type TProperty = {
+export type TProperty = {
   id: string;
   title: string;
   description: string;
@@ -198,12 +199,7 @@ const Singlepropertycard = ({ property }: Props) => {
           {/* Buttons */}
           <div className="border-t pt-8">
             <div className="grid md:grid-cols-2 gap-5">
-              <Link
-                href={`/dashboard/properties/update/${property.id}`}
-                className="bg-blue-600 hover:bg-blue-700 text-white text-center py-3 rounded-xl font-semibold transition"
-              >
-                ✏️ Update Property
-              </Link>
+              <Updatemodel property={property}/>
 
               <button onClick={handleDelete}
                 className="bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition"
