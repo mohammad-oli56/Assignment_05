@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import React from "react";
 
 type TMyProperty = {
@@ -75,7 +76,7 @@ const Mypropertypage = ({ myproperty }: Props) => {
 
             <td className="px-6 py-4 text-center">
               <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
-                Details
+                <Link href={`/landlord-dashboard/my-property/${property.id}`}>click</Link>
               </button>
             </td>
           </tr>
