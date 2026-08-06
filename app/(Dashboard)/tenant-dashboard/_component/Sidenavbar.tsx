@@ -6,7 +6,7 @@ const menuItems = [
   { title: "My Request", href: "/tenant-dashboard/my-requests" },
   { title: "Payment Create", href: "/tenant-dashboard/payment-create" },
   { title: "Payment History", href: "/tenant-dashboard/payment-history" },
-  { title: "Review", href: "/tenant-dashboard/review" },
+  // { title: "Review", href: "/tenant-dashboard/review" },
 ];
 const Sidenavbar = () => {
  return (

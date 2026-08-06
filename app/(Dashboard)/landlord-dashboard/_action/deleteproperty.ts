@@ -23,8 +23,8 @@ export const landlordgeleteproperty = async (id: string) => {
 
     return res.data;
   } catch (error: any) {
-    console.log("Status:", error.response?.status);
-    console.log("Response:", error.response?.data);
+    // console.log("Status:", error.response?.status);
+    // console.log("Response:", error.response?.data);
 
     throw new Error(
       error.response?.data?.message || "Failed to delete property"

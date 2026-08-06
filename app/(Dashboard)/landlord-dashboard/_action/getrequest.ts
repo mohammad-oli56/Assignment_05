@@ -17,8 +17,8 @@ export const getpropertyrequest = async () => {
 
     return res.data.data.result;
   } catch (error: any) {
-    console.log("Status:", error.response?.status);
-    console.log("Data:", error.response?.data);
+    // console.log("Status:", error.response?.status);
+    // console.log("Data:", error.response?.data);
 
     // যদি কোনো request না থাকে
     if (

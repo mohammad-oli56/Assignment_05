@@ -64,7 +64,7 @@ const Requestpage = ({ request = [] }: Props) => {
         toast.error(result.message || "Failed to update status");
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       toast.error("Something went wrong");
     }
   };

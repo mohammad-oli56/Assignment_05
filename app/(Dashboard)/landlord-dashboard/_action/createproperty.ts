@@ -53,7 +53,7 @@ export const createproperty = async (
       message: "Property created successfully",
     };
   } catch (error: any) {
-    console.log(error.response?.data || error);
+    // console.log(error.response?.data || error);
 
     return {
       success: false,

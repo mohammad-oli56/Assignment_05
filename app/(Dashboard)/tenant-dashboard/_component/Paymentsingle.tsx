@@ -1,8 +1,15 @@
 "use client";
 
-import { ArrowLeft, Calendar, CreditCard, DollarSign, FileText } from "lucide-react";
+import {
+  ArrowLeft,
+  Calendar,
+  CreditCard,
+  DollarSign,
+  FileText,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import React from "react";
+import ReviewModel from "./ReviewModel";
 
 type PaymentProps = {
   payment: any;
@@ -10,6 +17,12 @@ type PaymentProps = {
 
 const Paymentsingle = ({ payment }: PaymentProps) => {
   const router = useRouter();
+
+  // console.log(payment.rentalRequest.id)
+
+  // const handleComment = () => {
+  //   console.log("Property ID:", payment.rentalRequest.propertyId);
+  // };
 
   return (
     <div className="max-w-5xl mx-auto">
@@ -35,11 +48,10 @@ const Paymentsingle = ({ payment }: PaymentProps) => {
             </h2>
 
             <div
-              className={`inline-flex px-4 py-2 rounded-full font-semibold text-sm ${
-                payment.status === "COMPLETED"
+              className={`inline-flex px-4 py-2 rounded-full font-semibold text-sm ${payment.status === "COMPLETED"
                   ? "bg-green-100 text-green-700"
                   : "bg-yellow-100 text-yellow-700"
-              }`}
+                }`}
             >
               {payment.status}
             </div>
@@ -180,6 +192,11 @@ const Paymentsingle = ({ payment }: PaymentProps) => {
             </div>
           </div>
         </div>
+      </div>
+
+      {/* Comment Button */}
+      <div className="mt-8">
+        <ReviewModel id={payment.rentalRequest.propertyId}></ReviewModel>
       </div>
     </div>
   );
