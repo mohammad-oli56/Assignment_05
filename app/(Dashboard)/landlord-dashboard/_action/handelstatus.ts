@@ -4,7 +4,7 @@ import axios from "axios";
 import { cookies } from "next/headers";
 import { revalidatePath } from "next/cache";
 
-export const handelstatusfromaction = async (id: string) => {
+export const handelstatusfromaction = async (id: string,status:string) => {
   try {
     const cookieStore = await cookies();
 
@@ -13,7 +13,7 @@ export const handelstatusfromaction = async (id: string) => {
     const res = await axios.patch(
       `https://assignment-04-drab.vercel.app/api/landlord/requests/${id}`,
       {
-        status: "APPROVED",
+        status: status,
       },
       {
         headers: {

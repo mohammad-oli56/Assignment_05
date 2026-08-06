@@ -1,9 +1,7 @@
 "use client";
 
-import React, { useTransition } from "react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { handelstatusfromaction } from "../_action/handelstatus";
+
+import StatusMolal from "./StatusMolal";
 
 type TRequest = {
   id: string;
@@ -47,27 +45,10 @@ type Props = {
 };
 
 const Requestpage = ({ request = [] }: Props) => {
-  const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  
+ 
 
-  const handelstatus = async (id: string) => {
-    try {
-      const result = await handelstatusfromaction(id);
-
-      if (result.success) {
-        toast.success(result.message || "Status Updated Successfully");
-
-        startTransition(() => {
-          router.refresh();
-        });
-      } else {
-        toast.error(result.message || "Failed to update status");
-      }
-    } catch (error) {
-      // console.log(error);
-      toast.error("Something went wrong");
-    }
-  };
+ 
 
   if (request.length === 0) {
     return (
@@ -138,13 +119,14 @@ const Requestpage = ({ request = [] }: Props) => {
                 </td>
 
                 <td className="px-6 py-4 text-center">
-                  <button
+                  <StatusMolal id={item.id}/>
+                  {/* <button
                     disabled={isPending}
                     onClick={() => handelstatus(item.id)}
                     className="bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 text-white px-4 py-2 rounded-lg"
                   >
                     {isPending ? "Updating..." : "Change Status"}
-                  </button>
+                  </button> */}
                 </td>
               </tr>
             ))}
