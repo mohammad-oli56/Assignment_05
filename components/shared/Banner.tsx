@@ -9,39 +9,7 @@ export default function Banner() {
 
             <div className="mx-auto max-w-7xl px-6 py-8">
 
-                {/* Top Right Search */}
-                <div className="flex justify-end mb-10">
-
-                    <div className="flex w-full max-w-xl items-center gap-3 rounded-full bg-white p-2 shadow-lg border">
-
-                        <div className="relative flex-1">
-                            <MapPin 
-                                className="absolute left-3 top-3 text-gray-400"
-                                size={18}
-                            />
-
-                            <Input
-                                placeholder="Location"
-                                className="rounded-full pl-10 border-0 bg-gray-50"
-                            />
-                        </div>
-
-
-                        <Input
-                            placeholder="Property Type"
-                            className="rounded-full border-0 bg-gray-50"
-                        />
-
-
-                        <Button
-                            className="rounded-full bg-green-600 px-6 hover:bg-green-700"
-                        >
-                            <Search size={18}/>
-                        </Button>
-
-                    </div>
-
-                </div>
+               
 
 
                 {/* Hero */}
