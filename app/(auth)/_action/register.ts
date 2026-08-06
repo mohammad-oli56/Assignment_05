@@ -1,4 +1,4 @@
-'use server';
+"use server";
 
 import axios from "axios";
 
@@ -12,15 +12,42 @@ export const resinsteAction = async (
   formData: FormData
 ): Promise<FormState> => {
   try {
-    const name = formData.get("name") as string;
-    const email = formData.get("email") as string;
-    const phoneNumber = formData.get("phoneNumber") as string;
-    const password = formData.get("password") as string;
+    const name = formData.get("name")?.toString().trim() || "";
+    const email = formData.get("email")?.toString().trim() || "";
+    const phoneNumber =
+      formData.get("phoneNumber")?.toString().trim() || "";
+    const password = formData.get("password")?.toString() || "";
+    const confirmPassword =
+      formData.get("confirmPassword")?.toString() || "";
 
-    if (!name || !email || !phoneNumber || !password) {
+    if (!name || !email || !password || !confirmPassword) {
       return {
         success: false,
-        message: "All fields are required.",
+        message: "All required fields must be filled.",
+      };
+    }
+
+    const emailRegex =
+      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+    if (!emailRegex.test(email)) {
+      return {
+        success: false,
+        message: "Invalid email address.",
+      };
+    }
+
+    if (password.length < 6) {
+      return {
+        success: false,
+        message: "Password must be at least 6 characters.",
+      };
+    }
+
+    if (password !== confirmPassword) {
+      return {
+        success: false,
+        message: "Passwords do not match.",
       };
     }
 
@@ -42,8 +69,8 @@ export const resinsteAction = async (
     return {
       success: false,
       message:
-        error?.response?.data?.message ||
-        "Something went wrong. Please try again.",
+        error?.response?.data?.message ??
+        "Something went wrong.",
     };
   }
 };
