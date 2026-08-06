@@ -84,7 +84,7 @@ const ShowMyrequest = ({ requests }: Props) => {
 
                     <td className="px-6 py-4 text-center">
                       <Link
-                        href={`/tenant-dashboard/my-request/${item.id}`}
+                        href={`/tenant-dashboard/my-requests/${item.id}`}
                         className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg"
                       >
                         Details
