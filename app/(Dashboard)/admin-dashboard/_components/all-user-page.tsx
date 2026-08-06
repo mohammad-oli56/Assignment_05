@@ -74,6 +74,7 @@ const AllUserPage = ({ users }: AllUserPageProps) => {
                     <Modal
                       id={user.id}
                       status={user.status}
+                      role= {user.role}
                     />
                   </td>
                 </tr>

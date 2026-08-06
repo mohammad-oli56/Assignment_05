@@ -15,9 +15,10 @@ import { useRouter } from "next/navigation";
 interface ModalProps {
   id: string;
   status: "ACTIVE" | "BLOCKED";
+  role: "ADMIN" | "LANDLORD" | "TENANT"
 }
 
-export function Modal({ id, status }: ModalProps) {
+export function Modal({ id, status, role }: ModalProps) {
   const [open, setOpen] = useState(false);
   const router = useRouter();
 
@@ -60,8 +61,16 @@ export function Modal({ id, status }: ModalProps) {
             <strong>Current Status:</strong> {status}
           </p>
 
-          <Button onClick={changeStatus}>
-            {status === "ACTIVE" ? "Block User" : "Activate User"}
+
+          <Button
+            onClick={changeStatus}
+            disabled={role === "ADMIN"}
+          >
+            {role === "ADMIN"
+              ? "You are not allowed change admin status"
+              : status === "ACTIVE"
+                ? "Block User"
+                : "Activate User"}
           </Button>
         </div>
       </DialogContent>
