@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Home, Building2, Clock3 } from "lucide-react";
+import { Home, Building2, Clock3, DollarSign } from "lucide-react";
 
 type Request = {
   id: string;
@@ -25,6 +25,14 @@ type TMyProperty = {
   categoryId: string;
   createdAt: string;
   updatedAt: string;
+
+    rentalRequests: {
+    id: string;
+    status: string;
+    payment: {
+      amount: number;
+    } | null;
+  }[];
 
   category: {
     id: string;
@@ -64,7 +72,7 @@ type Props = {
   requests: Request[];
   user: IUser;
 };
-
+ 
 const LandlordHome = ({
   properties = [],
   requests = [],
@@ -77,24 +85,39 @@ const LandlordHome = ({
     (property) => property.landlordId === userId
   );
 
+  const totalEarnings = myProperties.reduce((total, property) => {
+  return (
+    total +
+    property.rentalRequests.reduce((sum, request) => {
+      return sum + (request.payment?.amount || 0);
+    }, 0)
+  );
+}, 0);
+
   const pending = requests.filter(
     (item) => item.status === "PENDING"
   ).length;
 
   const cards = [
-    {
-      title: "My Properties",
-      value: myProperties.length,
-      color: "bg-blue-600",
-      icon: <Building2 size={30} />,
-    },
-    {
-      title: "Pending Requests",
-      value: pending,
-      color: "bg-yellow-500",
-      icon: <Clock3 size={30} />,
-    },
-  ];
+  {
+    title: "My Properties",
+    value: myProperties.length,
+    color: "bg-blue-600",
+    icon: <Home size={28} />,
+  },
+  {
+    title: "Pending Requests",
+    value: pending,
+    color: "bg-yellow-500",
+    icon: <Clock3 size={28} />,
+  },
+  {
+    title: "Total Earnings",
+    value: `৳ ${totalEarnings}`,
+    color: "bg-green-600",
+    icon: <DollarSign size={28} />,
+  },
+];
 
   return (
     <div className="min-h-screen bg-slate-100 p-8">

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { landlordgeleteproperty } from "../_action/deleteproperty";
 import { useRouter } from "next/navigation";
 import Updatemodel from "./Updatemodel";
+import { toast } from "sonner";
 
 export type TProperty = {
   id: string;
@@ -30,6 +31,11 @@ export type TProperty = {
     createdAt: string;
     updatedAt: string;
   };
+  rentalRequests: {
+    id: string;
+    status: string;
+    payment: unknown | null;
+  }[];
   landlord: {
     id: string;
     name: string;
@@ -42,15 +48,20 @@ type Props = {
 
 const Singlepropertycard = ({ property }: Props) => {
 
-    const router = useRouter()
+  const router = useRouter()
+
+  const hasCompletedRequest = property.rentalRequests?.some(
+    (request) => request.status === "COMPLETED"
+  );
+
   const handleDelete = async () => {
-    try {
+    try { 
       await landlordgeleteproperty(property.id);
-      alert("Property deleted successfully!");
-        router.push("/landlord-dashboard/my-property")
+       toast("Event delete successfully", { position: "top-right" })
+      router.push("/landlord-dashboard/my-property")
     } catch (error) {
       console.error(error);
-      alert("Failed to delete property.");
+      toast("Failed to delete property.", { position: "top-right" })
     }
   };
 
@@ -82,11 +93,10 @@ const Singlepropertycard = ({ property }: Props) => {
               </h2>
 
               <span
-                className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-medium ${
-                  property.isAvailable
+                className={`inline-block mt-2 px-3 py-1 rounded-full text-sm font-medium ${property.isAvailable
                     ? "bg-green-100 text-green-700"
                     : "bg-red-100 text-red-700"
-                }`}
+                  }`}
               >
                 {property.isAvailable ? "Available" : "Unavailable"}
               </span>
@@ -199,12 +209,19 @@ const Singlepropertycard = ({ property }: Props) => {
           {/* Buttons */}
           <div className="border-t pt-8">
             <div className="grid md:grid-cols-2 gap-5">
-              <Updatemodel property={property}/>
+              <Updatemodel property={property} />
 
-              <button onClick={handleDelete}
-                className="bg-red-600 hover:bg-red-700 text-white py-3 rounded-xl font-semibold transition"
+              <button
+                onClick={handleDelete}
+                disabled={hasCompletedRequest}
+                className={`py-3 rounded-xl font-semibold transition ${hasCompletedRequest
+                    ? "bg-gray-400 cursor-not-allowed text-white"
+                    : "bg-red-600 hover:bg-red-700 text-white"
+                  }`}
               >
-                🗑 Delete Property
+                {hasCompletedRequest
+                  ? "🔒 Cannot Delete — Payment Already Completed"
+                  : "🗑 Delete Property"}
               </button>
             </div>
           </div>

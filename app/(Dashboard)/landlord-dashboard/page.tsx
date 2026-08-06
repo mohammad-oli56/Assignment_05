@@ -9,6 +9,8 @@ const page = async () => {
   const requests = await getpropertyrequest();
   const user = await getMe();
 
+  // console.log(properties)
+ 
   return (
     <LandlordHome
       properties={properties}
