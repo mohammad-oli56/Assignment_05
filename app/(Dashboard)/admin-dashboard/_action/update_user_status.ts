@@ -11,7 +11,7 @@ export const changeuserstatus = async ({
   value: "ACTIVE" | "BLOCKED";
 }) => {
   try {
-    console.log(id, value);
+    // console.log(id, value);
 
     const cookieStore = await cookies();
     const accessToken = cookieStore.get("accessToken")?.value;
@@ -28,7 +28,7 @@ export const changeuserstatus = async ({
       }
     );
 
-    console.log(res.data);
+    // console.log(res.data);
     return res.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

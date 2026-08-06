@@ -1,6 +1,7 @@
 
 import { getMe } from "@/service/getMe";
 import SideNavbar from "./_component/SideNavbar";
+import { Toaster } from "@/components/ui/sonner";
 
 
 export default async function AdminLayout({
@@ -16,6 +17,7 @@ export default async function AdminLayout({
 
       <main className="flex-1 p-6">
         {children}
+         <Toaster />
       </main>
     </div>
   );
