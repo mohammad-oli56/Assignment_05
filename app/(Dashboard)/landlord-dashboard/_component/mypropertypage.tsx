@@ -66,9 +66,7 @@ const Mypropertypage = ({ myproperty, user }: Props) => {
     (property) => property.landlordId === userId
   );
 
-  console.log("Logged In User ID:", userId);
-  console.log("All Properties:", myproperty);
-  console.log("Filtered Properties:", myProperties);
+  
 
   return (
     <div className="overflow-x-auto bg-white rounded-lg shadow">
