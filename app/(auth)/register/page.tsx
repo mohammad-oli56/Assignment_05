@@ -117,6 +117,31 @@ const RegisterPage = () => {
                 pattern="^01[3-9]\d{8}$"
               />
             </div>
+            {/* Role */}
+            <div className="grid gap-2">
+              <Label htmlFor="role">
+                Account Type
+              </Label>
+
+              <select
+                id="role"
+                name="role"
+                required
+                className="h-10 rounded-md border border-input bg-background px-3 py-2 text-sm outline-none focus:border-blue-500"
+              >
+                <option value="">
+                  Select Role
+                </option>
+
+                <option value="TENANT">
+                  Tenant
+                </option>
+
+                <option value="LANDLORD">
+                  Landlord
+                </option>
+              </select>
+            </div>
 
             {/* Password */}
             <div className="grid gap-2">
@@ -153,11 +178,10 @@ const RegisterPage = () => {
             {/* Message */}
             {state.message && (
               <div
-                className={`rounded-lg p-3 text-sm ${
-                  state.success
+                className={`rounded-lg p-3 text-sm ${state.success
                     ? "bg-green-100 text-green-700 border border-green-300"
                     : "bg-red-100 text-red-700 border border-red-300"
-                }`}
+                  }`}
               >
                 {state.message}
               </div>

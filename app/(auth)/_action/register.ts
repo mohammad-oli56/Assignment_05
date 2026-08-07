@@ -16,11 +16,18 @@ export const resinsteAction = async (
     const email = formData.get("email")?.toString().trim() || "";
     const phoneNumber =
       formData.get("phoneNumber")?.toString().trim() || "";
+    const role = formData.get("role")?.toString().trim() || "";
     const password = formData.get("password")?.toString() || "";
     const confirmPassword =
       formData.get("confirmPassword")?.toString() || "";
 
-    if (!name || !email || !password || !confirmPassword) {
+    if (
+      !name ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      !role
+    ) {
       return {
         success: false,
         message: "All required fields must be filled.",
@@ -37,10 +44,21 @@ export const resinsteAction = async (
       };
     }
 
+    if (
+      role !== "TENANT" &&
+      role !== "LANDLORD"
+    ) {
+      return {
+        success: false,
+        message: "Please select a valid role.",
+      };
+    }
+
     if (password.length < 6) {
       return {
         success: false,
-        message: "Password must be at least 6 characters.",
+        message:
+          "Password must be at least 6 characters.",
       };
     }
 
@@ -58,6 +76,7 @@ export const resinsteAction = async (
         email,
         password,
         phoneNumber,
+        role,
       }
     );
 

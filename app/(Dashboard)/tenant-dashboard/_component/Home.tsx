@@ -80,7 +80,7 @@ const Home = ({ requests, allhistory }: Props) => {
     <div className="min-h-screen bg-gray-100 p-6">
       <div className="mx-auto max-w-7xl">
         <h1 className="mb-8 text-3xl font-bold text-gray-800">
-          Dashboard
+         TENANT Dashboard
         </h1>
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
