@@ -7,7 +7,7 @@ export const allpaymenthistory = async () => {
 
     const cookieHeader = cookieStore.get("accessToken")?.value;
 
-    console.log("Token:", cookieHeader);
+    // console.log("Token:", cookieHeader);
 
     const res = await axios.get(
       "https://assignment-04-drab.vercel.app/api/payments",
@@ -20,8 +20,8 @@ export const allpaymenthistory = async () => {
 
     return res.data.data.result;
   } catch (error: any) {
-    console.log("Status:", error.response?.status);
-    console.log("Response:", error.response?.data);
+    // console.log("Status:", error.response?.status);
+    // console.log("Response:", error.response?.data);
 
     return [];
   }

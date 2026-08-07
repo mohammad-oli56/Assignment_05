@@ -6,7 +6,7 @@ import PropertyList from "../_component/Propritylist";
 const page = async () => {
   const data = await getAllproperty();
 
-  console.log(data)
+  // console.log(data)
 
   return (
     <div className="pt-10">
