@@ -34,7 +34,7 @@ export async function updatePropertyAction(
                 bedrooms: Number(formData.get("bedrooms")),
                 bathrooms: Number(formData.get("bathrooms")),
                 area: Number(formData.get("area")),
-
+                isAvailable: formData.get("isAvailable") === "on",
 
 
             },

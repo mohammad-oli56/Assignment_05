@@ -40,7 +40,7 @@ const initialState = {
 
 const UpdateModel = ({ property }: Props) => {
 
-    const routet = useRouter()
+  const routet = useRouter()
 
   const [open, setOpen] = useState(false);
 
@@ -102,84 +102,158 @@ const UpdateModel = ({ property }: Props) => {
           <DialogTitle>Update Property</DialogTitle>
         </DialogHeader>
 
-        <form action={formAction} className="space-y-4">
-
+        <div className="max-h-[calc(90vh-80px)] overflow-y-auto p-6">
+               <form action={formAction} className="space-y-6">
           <input type="hidden" name="id" value={property.id} />
 
-          <input
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+          <div className="grid gap-5 md:grid-cols-2">
 
-          <textarea
-            name="description"
-            value={formData.description}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div className="md:col-span-2">
+              <label className="mb-2 block font-medium">
+                Property Title
+              </label>
+              <input
+                name="title"
+                value={formData.title}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2 outline-none focus:border-green-500"
+              />
+            </div>
 
-          <input
-            type="number"
-            name="price"
-            value={formData.price}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div className="md:col-span-2">
+              <label className="mb-2 block font-medium">
+                Description
+              </label>
+              <textarea
+                rows={4}
+                name="description"
+                value={formData.description}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2 outline-none focus:border-green-500"
+              />
+            </div>
 
-          <input
-            name="location"
-            value={formData.location}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div>
+              <label className="mb-2 block font-medium">
+                Monthly Rent
+              </label>
+              <input
+                type="number"
+                name="price"
+                value={formData.price}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2"
+              />
+            </div>
 
-          <input
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div>
+              <label className="mb-2 block font-medium">
+                Area (sq.ft)
+              </label>
+              <input
+                type="number"
+                name="area"
+                value={formData.area}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2"
+              />
+            </div>
 
-          <input
-            type="number"
-            name="bedrooms"
-            value={formData.bedrooms}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div>
+              <label className="mb-2 block font-medium">
+                Bedrooms
+              </label>
+              <input
+                type="number"
+                name="bedrooms"
+                value={formData.bedrooms}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2"
+              />
+            </div>
 
-          <input
-            type="number"
-            name="bathrooms"
-            value={formData.bathrooms}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div>
+              <label className="mb-2 block font-medium">
+                Bathrooms
+              </label>
+              <input
+                type="number"
+                name="bathrooms"
+                value={formData.bathrooms}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2"
+              />
+            </div>
 
-          <input
-            type="number"
-            name="area"
-            value={formData.area}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
+            <div>
+              <label className="mb-2 block font-medium">
+                Location
+              </label>
+              <input
+                name="location"
+                value={formData.location}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2"
+              />
+            </div>
 
+            <div>
+              <label className="mb-2 block font-medium">
+                Address
+              </label>
+              <input
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                className="w-full rounded-lg border px-4 py-2"
+              />
+            </div>
 
-        
+            <div className="md:col-span-2 flex items-center justify-between rounded-xl border bg-gray-50 p-4">
+              <div>
+                <h4 className="font-semibold">Availability</h4>
+                <p className="text-sm text-gray-500">
+                  Enable if the property is available for rent.
+                </p>
+              </div>
 
-          {!state.success && (
-            <p className="text-red-500">{state.message}</p>
+              <label className="flex items-center gap-3">
+                <input
+                  type="checkbox"
+                  name="isAvailable"
+                  checked={formData.isAvailable}
+                  onChange={handleChange}
+                  className="h-5 w-5"
+                />
+                <span
+                  className={`font-medium ${formData.isAvailable
+                      ? "text-green-600"
+                      : "text-red-500"
+                    }`}
+                >
+                  {formData.isAvailable
+                    ? "Available"
+                    : "Unavailable"}
+                </span>
+              </label>
+            </div>
+
+          </div>
+
+          {!state.success && state.message && (
+            <p className="rounded-lg bg-red-50 p-3 text-red-600">
+              {state.message}
+            </p>
           )}
 
           <button
             disabled={pending}
-            className="w-full bg-green-600 text-white py-2 rounded"
+            className="w-full rounded-xl bg-green-600 py-3 font-semibold text-white transition hover:bg-green-700 disabled:opacity-50"
           >
             {pending ? "Updating..." : "Update Property"}
           </button>
-        </form>
+             </form>
+        </div>
       </DialogContent>
     </Dialog>
   );
