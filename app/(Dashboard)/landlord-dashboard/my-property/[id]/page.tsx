@@ -10,7 +10,7 @@ const Page = async ({ params }: TParam) => {
   const { id } = await params;
 
   const property = await getmysingleproperty(id);
-  console.log(property)
+  // console.log(property)
 
   return (
     <div>

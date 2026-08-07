@@ -5,7 +5,7 @@ const menuItems = [
   { title: "Rental create", href: "/property" },
   { title: "My Request", href: "/tenant-dashboard/my-requests" },
   { title: "Payment Create", href: "/tenant-dashboard/payment-create" },
-  { title: "Payment History", href: "/tenant-dashboard/payment-history" },
+  { title: "History and review", href: "/tenant-dashboard/payment-history" },
   // { title: "Review", href: "/tenant-dashboard/review" },
 ];
 const Sidenavbar = () => {

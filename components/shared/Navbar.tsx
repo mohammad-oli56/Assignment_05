@@ -52,7 +52,7 @@ const navLinks = [
   },
   {
     name: "About",
-    href: "/about",
+    href: "/about", 
   },
   {
     name: "Contact",
