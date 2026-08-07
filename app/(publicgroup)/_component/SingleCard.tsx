@@ -2,8 +2,9 @@
 
 import React from "react";
 import CreateRequestModal from "./CreateRequestModal";
+import Link from "next/link";
 
-const SingleCard = ({ property, role }: any) => {
+const SingleCard = ({ property, role,isLoggedIn  }: any) => {
   const getImage = () => {
     const img = property?.images?.[0];
 
@@ -131,16 +132,24 @@ const SingleCard = ({ property, role }: any) => {
             </div>
           </div>
 
-          {role === "TENANT" ? (
-            <CreateRequestModal id={property.id} />
-          ) : (
-            <button
-              disabled
-              className="w-full cursor-not-allowed rounded-xl bg-gray-400 py-3 text-white"
-            >
-              You are not allowed
-            </button>
-          )}
+          {isLoggedIn ? (
+        role === "TENANT" ? (
+          <CreateRequestModal id={property.id} />
+        ) : (
+          <button
+            disabled
+            className="w-full cursor-not-allowed rounded-xl bg-gray-400 py-3 text-white"
+          >
+            You are not allowed
+          </button>
+        )
+      ) : (
+        <Link href="/login">
+          <button className="w-full rounded-xl bg-blue-600 py-3 text-white">
+            Login to Request
+          </button>
+        </Link>
+      )}
         </div>
       </div>
     </div>
